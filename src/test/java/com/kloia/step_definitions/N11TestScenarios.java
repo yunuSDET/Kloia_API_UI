@@ -9,7 +9,8 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-
+import org.junit.Assert;
+import org.openqa.selenium.Keys;
 
 
 public class N11TestScenarios {
@@ -36,11 +37,20 @@ public class N11TestScenarios {
         BrowserUtils.waitFor(3);
     loginPage.inputEmail.sendKeys(ConfigurationReader.getProperty("email"));
         loginPage.inputPassword.sendKeys(ConfigurationReader.getProperty("password"));
+        BrowserUtils.waitFor(1);
+        loginPage.loginBtn.click();
     }
 
 
     @Then("Verify successful login")
     public void verify_successful_login() {
+
+        BrowserUtils.waitFor(2);
+        BrowserUtils.switchToWindow("n11");
+        BrowserUtils.waitFor(6);
+
+
+        Assert.assertEquals("n11 - 10 Üzerinden 11'lik Alışveriş Deneyimi", Driver.getDriver().getTitle());
 
     }
 

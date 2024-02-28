@@ -134,14 +134,12 @@ public class BrowserUtils {
      * @param targetTitle
      */
     public static void switchToWindow(String targetTitle) {
-        String origin = Driver.getDriver().getWindowHandle();
         for (String handle : Driver.getDriver().getWindowHandles()) {
             Driver.getDriver().switchTo().window(handle);
             if (Driver.getDriver().getTitle().toLowerCase().contains(targetTitle.toLowerCase())) {
                 break;
             }
         }
-        Driver.getDriver().switchTo().window(origin);
     }
 
     /**
